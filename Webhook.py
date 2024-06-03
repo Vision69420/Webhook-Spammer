@@ -17,6 +17,7 @@ ascii_art = """
                                                                                                                        
 
 """
+
 print(Colorate.Vertical(Colors.red_to_blue, ascii_art))
 
 def send_discord_message(webhook_url, name, message):
@@ -39,13 +40,14 @@ def send_discord_message(webhook_url, name, message):
         print(f"An error occurred: {err}")
 
 if __name__ == "__main__":
-    webhook_url = input("[>] Enter the webhook URL: ")
+    webhook_urls = input("[>] Enter the webhook URLs separated by comma: ").split(',')
     webhook_name = input("[>] Enter the new name for the webhook: ")
     message = input("[>] Enter the message to send: ")
 
     try:
         while True:
-            send_discord_message(webhook_url, webhook_name, message)
-            time.sleep(0.0)  # added delay to prevent rate limiting :D
+            for url in webhook_urls:
+                send_discord_message(url.strip(), webhook_name, message)
+             time.sleep(0.5)
     except KeyboardInterrupt:
         print("[>] Keyboard Interrupt. Goodbye! :D")
