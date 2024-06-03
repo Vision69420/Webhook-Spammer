@@ -48,6 +48,6 @@ if __name__ == "__main__":
         while True:
             for url in webhook_urls:
                 send_discord_message(url.strip(), webhook_name, message)
-             time.sleep(0.5)
+                time.sleep(0.5)
     except KeyboardInterrupt:
         print("[>] Keyboard Interrupt. Goodbye! :D")
